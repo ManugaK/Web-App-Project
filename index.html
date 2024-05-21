@@ -2,6 +2,37 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script type = "text/javascript">
+  function Sub() {
+    var num1 = Number(document.getElementById("txtNum1").value);
+    var num2 = Number(document.getElementById("txtNum2").value);
+    document.getElementById("txtAnswer").innerHTML = (num1 - num2);
+}
+
+function Add() {
+    var num1 = Number(document.getElementById("txtNum1").value);
+    var num2 = Number(document.getElementById("txtNum2").value);
+    document.getElementById("txtAnswer").innerHTML = (num1 + num2);
+}
+
+function Mul() {
+    var num1 = Number(document.getElementById("txtNum1").value);
+    var num2 = Number(document.getElementById("txtNum2").value);
+    document.getElementById("txtAnswer").innerHTML = (num1 * num2);
+}
+
+function Div() {
+    var num1 = Number(document.getElementById("txtNum1").value);
+    var num2 = Number(document.getElementById("txtNum2").value);
+    document.getElementById("txtAnswer").innerHTML = (num1 / num2);
+}
+
+function Mod() {
+    var num1 = Number(document.getElementById("txtNum1").value);
+    var num2 = Number(document.getElementById("txtNum2").value);
+    document.getElementById("txtAnswer").innerHTML = (num1 % num2);
+}
+</script>
 </head>
 <body>
   <div class="jumbotron jumbotron-fluid">
