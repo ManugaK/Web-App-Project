@@ -1,62 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script type = "text/javascript">
-  function Sub() {
-    var num1 = Number(document.getElementById("txtNum1").value);
-    var num2 = Number(document.getElementById("txtNum2").value);
-    document.getElementById("txtAnswer").innerHTML = (num1 - num2);
-}
-
-function Add() {
-    var num1 = Number(document.getElementById("txtNum1").value);
-    var num2 = Number(document.getElementById("txtNum2").value);
-    document.getElementById("txtAnswer").innerHTML = (num1 + num2);
-}
-
-function Mul() {
-    var num1 = Number(document.getElementById("txtNum1").value);
-    var num2 = Number(document.getElementById("txtNum2").value);
-    document.getElementById("txtAnswer").innerHTML = (num1 * num2);
-}
-
-function Div() {
-    var num1 = Number(document.getElementById("txtNum1").value);
-    var num2 = Number(document.getElementById("txtNum2").value);
-    document.getElementById("txtAnswer").innerHTML = (num1 / num2);
-}
-
-function Mod() {
-    var num1 = Number(document.getElementById("txtNum1").value);
-    var num2 = Number(document.getElementById("txtNum2").value);
-    document.getElementById("txtAnswer").innerHTML = (num1 % num2);
-}
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library management system</title>
 </head>
 <body>
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h2>Calculator</h2>
-      <div class="row">
-        <div class="col">
-          <label for="txtNum1">Enter Number 1:</label>
-          <input type="text" class="form-control" id="txtNum1" placeholder="Number 1" required>
-        </div>
-        <div class="col">
-          <label for="txtNum2">Enter Number 2:</label>
-          <input type="text" class="form-control" id="txtNum2" placeholder="Number 2" required>
-        </div>
-      </div>
-      <div class="mt-3">
-        <button type="button" class="btn btn-primary" onclick="Add()">ADDITION</button>
-        <button type="button" class="btn btn-primary" onclick="Sub()">SUBTRACTION</button>
-        <button type="button" class="btn btn-primary" onclick="Mul()">MULTIPLICATION</button>
-        <button type="button" class="btn btn-primary" onclick="Div()">DIVISION</button>
-        <button type="button" class="btn btn-primary" onclick="Mod()">MODULUS</button>
-      </div>      
-      <h3 class="mt-5" id="txtAnswer"></h3>
-    </div>
-  </div>
+ <h1>Hello</h1> 
 </body>
 </html>
