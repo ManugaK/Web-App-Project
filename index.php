@@ -16,8 +16,9 @@ if (!isset($_SESSION["user"])) {
 </head>
 <body>
     <div class="container">
-        <h1>Wellcome to dashboard</h1>
-        <a href="logout.php" class="btn btn-warning">Logout</a>
+        <h1>Wellcome to dashboard</h1><br>
+        <a href="admin_panel.php" class="btn btn-primary">Admin Panel</a>
+        <a href="logout.php" class="btn btn-danger">Logout</a>
     </div>
 </body>
 </html>
