@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Book Category Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Library Book Category Registration</h1>
+        <form id="categoryForm">
+            <label for="categoryId">Category ID:</label>
+            <input type="text" id="categoryId" name="categoryId" required>
+            
+            <label for="categoryName">Category Name:</label>
+            <input type="text" id="categoryName" name="categoryName" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+        
+        <table id="categoryTable">
+            <thead>
+                <tr>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                    <th>Date Modified</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
