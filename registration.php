@@ -28,19 +28,28 @@ if (isset($_SESSION["user"])) {
 
             $errors = array();
 
-            if (empty($userid) OR empty($firstname) OR empty($lastname) OR empty($username) OR empty($password) OR empty($email)){
-                array_push($errors,"All fields are required.");
-            }
-            if (!preg_match('/^U[0-9]{3}$/', $userid)){
-                array_push($errors,"Invalid user ID format. Use 'U&lt;BOOK_ID&gt;' format.");
-            }
-            if (strlen($password) < 8 ){
-                array_push($errors, "Password must be more than 8 characters.");
-            }
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                array_push($errors,"Invalid email format."); 
-            }
+            // if (empty($userid) OR empty($firstname) OR empty($lastname) OR empty($username) OR empty($password) OR empty($email)){
+            //     array_push($errors,"All fields are required.");
+            // }
+            // if (!preg_match('/^U[0-9]{3}$/', $userid)){
+            //     array_push($errors,"Invalid user ID format. Use 'U&lt;BOOK_ID&gt;' format.");
+            // }
+            // if (strlen($password) < 8 ){
+            //     array_push($errors, "Password must be more than 8 characters.");
+            // }
+            // if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            //     array_push($errors,"Invalid email format.");
+                
+            // }
             require_once "database.php";
+
+            $sql = "SELECT * FROM user WHERE user_id = '$userid'";
+            $result = mysqli_query($conn,$sql);
+            $rowCount = mysqli_num_rows($result);
+            if ($rowCount > 0){
+                array_push($errors, "User ID already exists.");
+            }
+
             $sql = "SELECT * FROM user WHERE email = '$email'";
             $result = mysqli_query($conn,$sql);
             $rowCount = mysqli_num_rows($result);
@@ -78,22 +87,22 @@ if (isset($_SESSION["user"])) {
         ?>
     <form action="registration.php" method="post">
         <div class="form-group"> 
-            <input type="text" class="form-control" name="User_ID" placeholder="e.g. U001">
+            <input type="text" class="form-control" name="User_ID" placeholder="e.g. U001" required pattern= "U\d{3}">
         </div>
         <div class="form-group"> 
-            <input type="text" class="form-control" name="Firstname" placeholder="Firstname:">
+            <input type="text" class="form-control" name="Firstname" placeholder="Firstname:" required>
         </div>
         <div class="form-group"> 
-            <input type="text" class="form-control" name="Lastname" placeholder="Lastname:">
+            <input type="text" class="form-control" name="Lastname" placeholder="Lastname:" required>
         </div>
         <div class="form-group"> 
-            <input type="text" class="form-control" name="Username" placeholder="Username:">
+            <input type="text" class="form-control" name="Username" placeholder="Username:" required>
         </div>
         <div class="form-group"> 
-            <input type="password" class="form-control" name="Password" placeholder="Password:">
+            <input type="password" class="form-control" name="Password" placeholder="Password:" required pattern= ".{8,}" >
         </div>
         <div class="form-group"> 
-            <input type="email" class="form-control" name="Email" placeholder="Email:">
+            <input type="email" class="form-control" name="Email" placeholder="Email:" required >
         </div>
         <div class="form-btn"> 
             <input type="submit" class="btn btn-primary" value="Register" name="submit">

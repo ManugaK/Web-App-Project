@@ -22,7 +22,7 @@ $result = mysqli_query($conn, $sql);
 <body>
     <div class="container-fluid">
         <h2 style="text-align:center">Admin Panel</h2><br>
-        <a href="index.php" class="btn btn-secondary mb-3">Back to Dashboard</a>
+        <a href="index.php" class="btn btn-primary mb-3">Back to Dashboard</a>
         <a href="logout.php" class="btn btn-danger mb-3">Logout</a>
         <table class="table table-bordered">
             <thead>
@@ -46,7 +46,7 @@ $result = mysqli_query($conn, $sql);
                         <td><?= htmlspecialchars($user['password']) ?></td>
                         <td><?= htmlspecialchars($user['email']) ?></td>
                         <td>
-                            <a href="edit_user.php?id=<?= htmlspecialchars($user['user_id']) ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="edit_user.php?id=<?= htmlspecialchars($user['user_id']) ?>" class="btn btn-warning btn-sm">Edit</a>
                             <a href="delete_user.php?id=<?= htmlspecialchars($user['user_id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                         </td>
                     </tr>

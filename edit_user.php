@@ -45,6 +45,13 @@ if (isset($_POST["update"])) {
         array_push($errors, "Password must be more than 8 characters.");
     }
 
+    $sql = "SELECT * FROM user WHERE user_id = '$userid'";
+    $result = mysqli_query($conn,$sql);
+    $rowCount = mysqli_num_rows($result);
+    if ($user_id!=$userid && $rowCount > 0){
+        array_push($errors, "User ID already exists.");
+    }
+
     // Check for existing username if it has changed
     if ($username !== $user['username']) {
         $sql = "SELECT * FROM user WHERE username = '$username'";
@@ -121,7 +128,7 @@ if (isset($_POST["update"])) {
                 <label for="Password">Password (leave blank to keep unchanged)</label>
                 <input type="password" class="form-control" name="Password" placeholder="Enter new password (optional)">
             </div>
-            <button type="submit" class="btn btn-primary mt-3" name="update">Edit</button>
+            <button type="submit" class="btn btn-warning mt-3" name="update">Confirm</button>
             <a href="admin_panel.php" class="btn btn-secondary mt-3">Cancel</a>
         </form>
     </div>
