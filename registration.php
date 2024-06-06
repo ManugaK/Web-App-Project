@@ -12,8 +12,25 @@ if (isset($_SESSION["user"])) {
     <title>Register Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>.table thead th {
+            background-color: #4942E4;
+            color: white; }
+            .navbar-custom {
+        background-color: #11009E;
+    }
+    </style>
 </head>
 <body>
+<div class="pos-f-t">
+          <div class="navbar-custom p-4">
+            <h5 class="text-white h4">Library Management System</h5>
+            <span class="text-muted">Books are gateways to endless knowledge, creativity, and discovery, enriching the minds of all who explore them.</span>
+          </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script><br><br>
     <div class="container">
         <?php
         if (isset($_POST["submit"])) {
@@ -28,19 +45,6 @@ if (isset($_SESSION["user"])) {
 
             $errors = array();
 
-            // if (empty($userid) OR empty($firstname) OR empty($lastname) OR empty($username) OR empty($password) OR empty($email)){
-            //     array_push($errors,"All fields are required.");
-            // }
-            // if (!preg_match('/^U[0-9]{3}$/', $userid)){
-            //     array_push($errors,"Invalid user ID format. Use 'U&lt;BOOK_ID&gt;' format.");
-            // }
-            // if (strlen($password) < 8 ){
-            //     array_push($errors, "Password must be more than 8 characters.");
-            // }
-            // if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            //     array_push($errors,"Invalid email format.");
-                
-            // }
             require_once "database.php";
 
             $sql = "SELECT * FROM user WHERE user_id = '$userid'";
