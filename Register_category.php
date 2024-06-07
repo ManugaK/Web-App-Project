@@ -16,6 +16,16 @@ function isCategoryIdExists($conn, $category_id) {
     mysqli_stmt_close($stmt);
     return $count > 0;
 }
+function isCategorynameExists($conn, $category_name) {
+    $sql = "SELECT COUNT(*) AS count FROM bookcategory WHERE category_name = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $category_name);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $count);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+    return $count > 0;
+}
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,7 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isCategoryIdExists($conn, $category_id)) {
             $message = "Category ID already exists. Please choose a different ID.";
             $message_type = "danger";
-        } else {
+        } 
+        elseif (isCategorynameExists($conn, $category_name)) {
+            $message = "Category Name already exists. Please choose a different Name.";
+            $message_type = "danger";
+        } 
+        
+        else {
             // Insert data into the database
             $sql = "INSERT INTO bookcategory (category_id, category_Name, date_modified) VALUES (?, ?, NOW())";
             $stmt = mysqli_prepare($conn, $sql);
