@@ -7,6 +7,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_category_id = $_POST['new_category_id'];
     $category_name = $_POST['category_name'];
 
+    // Check if the new category_id or category_name already exists
+    $sql_check = "SELECT * FROM bookcategory WHERE (category_id = ? OR category_Name = ?) AND category_id != ?";
+    $stmt_check = mysqli_prepare($conn, $sql_check);
+    mysqli_stmt_bind_param($stmt_check, "sss", $new_category_id, $category_name, $old_category_id);
+    mysqli_stmt_execute($stmt_check);
+    $result_check = mysqli_stmt_get_result($stmt_check);
+
+    if (mysqli_num_rows($result_check) > 0) {
+        $_SESSION['message'] = "Category ID or Category Name already exists.";
+        $_SESSION['message_type'] = "danger";
+        mysqli_stmt_close($stmt_check);
+        mysqli_close($conn);
+        header("Location: Edit_category.php?category_id=$old_category_id");
+        exit();
+    }
+
+    mysqli_stmt_close($stmt_check);
+
+    // Update the category
     $sql = "UPDATE bookcategory SET category_id=?, category_Name=?, date_modified=NOW() WHERE category_id=?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "sss", $new_category_id, $category_name, $old_category_id);
@@ -28,9 +47,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (isset($_GET['category_id'])) {
     $category_id = $_GET['category_id'];
-    $sql = "SELECT * FROM bookcategory WHERE category_id='$category_id'";
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM bookcategory WHERE category_id=?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $category_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $category = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
+    if (!$category) {
+        $_SESSION['message'] = "Category not found.";
+        $_SESSION['message_type'] = "danger";
+        header("Location: View_categories.php");
+        exit();
+    }
 } else {
     header("Location: View_categories.php");
     exit();
@@ -109,6 +138,15 @@ if (isset($_GET['category_id'])) {
 
 <div class="container mt-5 blur-border">
     <h2>Edit Category</h2>
+    <?php if(isset($_SESSION['message'])): ?>
+        <div class="alert alert-<?php echo $_SESSION['message_type']; ?>">
+            <?php 
+                echo $_SESSION['message']; 
+                unset($_SESSION['message']);
+                unset($_SESSION['message_type']);
+            ?>
+        </div>
+    <?php endif; ?>
     <form action="Edit_category.php" method="POST">
         <input type="hidden" name="old_category_id" value="<?php echo $category['category_id']; ?>">
         <div class="mb-3">
