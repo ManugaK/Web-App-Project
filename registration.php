@@ -11,19 +11,30 @@ if (isset($_SESSION["user"])) {
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Register Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>.table thead th {
-            background-color: #4942E4;
-            color: white; }
-            .navbar-custom {
-        background-color: #11009E;
-    }
-    </style>
+    <style>
+        .container{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    box-shadow: rgba(100,100,111,0.2)0px 7px 29px 0px;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    background-image: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.3),
+        rgba(0,0,0,0.2));
+        }
+</style>
 </head>
-<body>
+<body style="background-image: url('registration.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;">
 <div class="pos-f-t">
-          <div class="navbar-custom p-4">
+          <div class="bg-dark p-4">
             <h5 class="text-white h4">Library Management System</h5>
             <span class="text-muted">Books are gateways to endless knowledge, creativity, and discovery, enriching the minds of all who explore them.</span>
           </div>
