@@ -46,6 +46,36 @@ if (isset($_GET['book_id'])) {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('editbook.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .blur-border {
+            position: relative;
+            padding: 20px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.8); /* White background with opacity */
+            overflow: hidden; /* Ensure pseudo-element stays within container */
+        }
+
+        .blur-border::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(0, 0, 0, 0.2); /* Transparent border */
+            border-radius: 5px;
+            filter: blur(10px); /* Blur effect */
+            z-index: -1; /* Position behind the content */
+        }
+    </style>
 </head>
 <body>
 <div class="pos-f-t">
@@ -76,7 +106,7 @@ if (isset($_GET['book_id'])) {
         </nav>
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-5 blur-border">
         <h1>Edit Book</h1>
         <form action="Edit_book.php" method="POST">
             <input type="hidden" name="book_id" value="<?php echo $book['book_id']; ?>">

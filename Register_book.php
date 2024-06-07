@@ -70,6 +70,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('registerbook.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .blur-border {
+            position: relative;
+            padding: 20px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.8); /* White background with opacity */
+            overflow: hidden; /* Ensure pseudo-element stays within container */
+        }
+
+        .blur-border::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(0, 0, 0, 0.2); /* Transparent border */
+            border-radius: 5px;
+            filter: blur(10px); /* Blur effect */
+            z-index: -1; /* Position behind the content */
+        }
+    </style>
 </head>
 <body>
 
@@ -101,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </nav>
     </div>
 
-    <div class="container">
+    <div class="container mt-5 blur-border">
         <h2 class="my-4">Book Registration</h2>
         
         <?php if (!empty($message) && !empty($message_type)): ?>
@@ -146,6 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    
 
 
     <!-- Bootstrap JS -->
