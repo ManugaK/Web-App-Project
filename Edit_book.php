@@ -63,7 +63,7 @@ if (isset($_GET['book_id'])) {
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Register_book.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="Home_page.html">Home <span class="sr-only">(current)</span></a>
                 </li>
             </div>
           </nav>
