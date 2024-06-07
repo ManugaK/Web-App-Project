@@ -109,7 +109,10 @@ if (isset($_GET['book_id'])) {
     <div class="container mt-5 blur-border">
         <h1>Edit Book</h1>
         <form action="Edit_book.php" method="POST">
-            <input type="hidden" name="book_id" value="<?php echo $book['book_id']; ?>">
+            <div class="mb-3">
+                <label for="book_id" class="form-label">Enter Book ID:</label>
+                <input type="text" class="form-control" id="book_id" name="book_id" value="<?php echo $book['book_id']; ?>" required>
+            </div>
             <div class="mb-3">
                 <label for="book_name" class="form-label">Book Name:</label>
                 <input type="text" class="form-control" id="book_name" name="book_name" value="<?php echo $book['book_name']; ?>" required>
