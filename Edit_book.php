@@ -77,8 +77,7 @@ unset($_SESSION['form_values']);
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-image: url('editbook.jpg'); /* Replace with your image URL */
-            background-size: cover;
+            background-image: url('editbook.jpg'); 
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;

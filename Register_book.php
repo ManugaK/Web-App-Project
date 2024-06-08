@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-image: url('registerbook.jpg'); /* Replace with your image URL */
+            background-image: url('registerbook.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

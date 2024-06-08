@@ -9,7 +9,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-image: url('viewbooks.jpg'); /* Replace with your image URL */
+            background-image: url('viewbooks.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
