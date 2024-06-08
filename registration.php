@@ -81,7 +81,7 @@ if (isset($_SESSION["user"])) {
 
             if(count($errors) > 0){
                 foreach ($errors as $error){
-                    echo "<div class = 'alert alert-danger'>$error</div>";
+                    echo "<div class = 'alert alert-danger' style='text-align:center'>$error</div>";
                 }
             }else{
              
