@@ -124,3 +124,76 @@ if (isset($_POST["update"])) {
     </style>
 
 </head>
+<body>
+
+<div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <h5 class="text-white h4">Library Management System</h5>
+            <span class="text-muted">Books are gateways to endless knowledge, creativity, and discovery, enriching the minds of all who explore them.</span>
+          </div>
+
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="logout.php" style="color:red"><b>Logout</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="admin_panel.php">Admin panel <span class="sr-only">(current)</span></a>
+                </li>
+
+              </ul>
+            </div>
+          </nav>
+
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<div class="container mt-5 blur-border">
+        <h2 style="text-align:center">Edit User</h2><br>
+        <?php if (isset($errors) && count($errors) > 0): ?>
+            <?php foreach ($errors as $error): ?>
+                <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <form action="edit_user.php?id=<?= htmlspecialchars($user['user_id']) ?>" method="post">
+            <div class="form-group">
+                <label for="User_ID">User ID</label>
+                <input type="text" class="form-control" name="User_ID" value="<?= htmlspecialchars($user['user_id']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="Firstname">First Name</label>
+                <input type="text" class="form-control" name="Firstname" value="<?= htmlspecialchars($user['first_name']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="Lastname">Last Name</label>
+                <input type="text" class="form-control" name="Lastname" value="<?= htmlspecialchars($user['last_name']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" name="Username" value="<?= htmlspecialchars($user['username']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" name="Email" value="<?= htmlspecialchars($user['email']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="Password">Password (leave blank to keep unchanged)</label>
+                <input type="password" class="form-control" name="Password" placeholder="Enter new password (optional)">
+            </div>
+            <button type="submit" class="btn btn-warning mt-3" name="update">Confirm</button>
+            <a href="admin_panel.php" class="btn btn-secondary mt-3">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
