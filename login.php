@@ -43,7 +43,7 @@ if (isset($_SESSION["user"])) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script><br><br>
     
-    
+        <div class="container">
         <?php
         if (isset($_POST["login"])) {
             $username = $_POST["username"];
@@ -59,18 +59,18 @@ if (isset($_SESSION["user"])) {
                     header("Location: index.php");
                     die();
                 }else{
-                    echo "<div class='alert alert-danger'>Password does not match.</div>";
+                    echo "<div class='alert alert-danger' style='text-align:center'>Password does not match.</div>";
                 }
             }else{
-                echo "<div class='alert alert-danger'>Username does not match.</div>";
+                echo "<div class='alert alert-danger' style='text-align:center'>Username does not match.</div>";
             }
         }
         ?>
-        <div class="container">
+        
         <form action = "login.php" method = "post">
             <div class = "form-group">
                 <input type ="text" placeholder ="Enter username:" name ="username" class ="form-control">
-            </div>
+            </div> 
 
             <div class = "form-group">
                 <input type ="password" placeholder ="Enter password:" name ="password" class ="form-control">
