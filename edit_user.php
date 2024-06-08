@@ -197,3 +197,6 @@ if (isset($_POST["update"])) {
     </div>
 </body>
 </html>
+<?php
+mysqli_close($conn);
+?>
