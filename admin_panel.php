@@ -129,3 +129,6 @@ $result = mysqli_query($conn, $sql);
     </div>
 </body>
 </html>
+<?php
+mysqli_close($conn);
+?>
