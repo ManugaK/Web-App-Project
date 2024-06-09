@@ -77,6 +77,11 @@
                     <select name="category" id="category" class="form-select">
                         <option value="">All Categories</option>
                         <?php
+                         session_start();
+                            if (!isset($_SESSION["user"])) {
+                                 header("Location: login.php");
+                                  exit;
+                            }
                         include 'Db_connection.php';
                         $sql_categories = "SELECT * FROM bookcategory";
                         $result_categories = $conn->query($sql_categories);
