@@ -24,3 +24,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     mysqli_stmt_close($stmt_check);
+
+    
+    // Update the category
+    $sql = "UPDATE bookcategory SET category_id=?, category_Name=?, date_modified=NOW() WHERE category_id=?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "sss", $new_category_id, $category_name, $old_category_id);
+
+    if (mysqli_stmt_execute($stmt)) {
+        // $_SESSION['message'] = "Category updated successfully.";
+        // $_SESSION['message_type'] = "success";
+    } else {
+        $_SESSION['message'] = "Error updating category.";
+        $_SESSION['message_type'] = "danger";
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+
+    header("Location: View_categories.php");
+    exit();
+}
+
+if (isset($_GET['category_id'])) {
+    $category_id = $_GET['category_id'];
+    $sql = "SELECT * FROM bookcategory WHERE category_id=?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $category_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $category = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
+    if (!$category) {
+        $_SESSION['message'] = "Category not found.";
+        $_SESSION['message_type'] = "danger";
+        header("Location: View_categories.php");
+        exit();
+    }
+} else {
+    header("Location: View_categories.php");
+    exit();
+}
+?>
