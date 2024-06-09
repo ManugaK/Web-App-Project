@@ -142,3 +142,20 @@ mysqli_close($conn);
         </button>
     </nav>
 </div>
+<div class="container mt-5 blur-border">
+    <h1 class="mb-4">Register Category</h1>
+    <?php if ($message): ?>
+        <div class="alert alert-<?= $message_type; ?>"><?= $message; ?></div>
+    <?php endif; ?>
+    <form method="POST" action="">
+        <div class="mb-3">
+            <label for="category_id" class="form-label">Category ID</label>
+            <input type="text" name="category_id" id="category_id" class="form-control" placeholder="C001" required>
+        </div>
+        <div class="mb-3">
+            <label for="category_name" class="form-label">Category Name</label>
+            <input type="text" name="category_name" id="category_name" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Register Category</button>
+    </form>
+</div>
