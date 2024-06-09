@@ -73,3 +73,46 @@ if (!isset($_SESSION["user"])) {
         </button>
     </nav>
 </div>
+
+<div class="container mt-5 blur-border">
+    <h1 class="mb-4">View Categories</h1>
+    <?php
+    include 'Db_connection.php';
+    
+    $sql = "SELECT category_id, category_Name, date_modified FROM bookcategory";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        
+        echo "<div class='table-responsive'>";
+        echo "<table class='table table-striped'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>Category ID</th>";
+        echo "<th>Category Name</th>";
+        echo "<th>Date Modified</th>";
+        echo "<th>Actions</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["category_id"] . "</td>";
+            echo "<td>" . $row["category_Name"] . "</td>";
+            echo "<td>" . $row["date_modified"] . "</td>";
+            echo "<td>
+                    <a href='Edit_category.php?category_id=" . $row["category_id"] . "' class='btn btn-warning btn-sm'>Edit</a>
+                    <a href='Delete_category.php?category_id=" . $row["category_id"] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this category?\")'>Delete</a>
+                  </td>";
+            echo "</tr>";
+        }
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+    } else {
+        echo "<div class='alert alert-info'>No categories found.</div>";
+    }
+
+    $conn->close();
+    ?>
+</div>
