@@ -49,3 +49,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: Edit_book.php?book_id=$current_book_id");
     exit();
 }
+if (isset($_GET['book_id'])) {
+    $book_id = $_GET['book_id'];
+    $sql = "SELECT * FROM book WHERE book_id='$book_id'";
+    $result = mysqli_query($conn, $sql);
+    $book = mysqli_fetch_assoc($result);
+} else {
+    header("Location: View_books.php");
+    exit();
+}
+
+// Repopulate form values if they are stored in the session
+$form_values = isset($_SESSION['form_values']) ? $_SESSION['form_values'] : $book;
+unset($_SESSION['form_values']);
+?>
