@@ -13,3 +13,39 @@ function isBookIdExists($conn, $book_id, $current_book_id) {
     mysqli_stmt_close($stmt);
     return $count > 0;
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $current_book_id = $_POST['current_book_id'];
+    $book_id = $_POST['book_id'];
+    $book_name = $_POST['book_name'];
+    $category_id = $_POST['category_id'];
+
+    // Check if the new book ID already exists
+    if (isBookIdExists($conn, $book_id, $current_book_id)) {
+        $_SESSION['message'] = "Error: Book ID already exists. Please use a different Book ID.";
+        $_SESSION['message_type'] = "danger";
+
+        // Store form values in session to repopulate the form
+        $_SESSION['form_values'] = $_POST;
+    } else {
+        $sql = "UPDATE book SET book_id=?, book_name=?, category_id=? WHERE book_id=?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ssss", $book_id, $book_name, $category_id, $current_book_id);
+
+        if (mysqli_stmt_execute($stmt)) {
+            // $_SESSION['message'] = "Book updated successfully.";
+            // $_SESSION['message_type'] = "success";
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+            header("Location: View_books.php");
+            exit();
+        } else {
+            $_SESSION['message'] = "Error updating book.";
+            $_SESSION['message_type'] = "danger";
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
+    mysqli_close($conn);
+    header("Location: Edit_book.php?book_id=$current_book_id");
+    exit();
+}
