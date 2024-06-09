@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION["user"])) {
+     header("Location: login.php");
+      exit;
+}
 $servername = "127.0.0.1";  // database server address
 $username = "root";  //  database username default xammp
 $password = "";  //  database password default xammp
