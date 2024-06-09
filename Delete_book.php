@@ -15,11 +15,11 @@ if (isset($_GET['book_id'])) {
     mysqli_stmt_bind_param($stmt, "s", $book_id);
 
     if (mysqli_stmt_execute($stmt)) {
-        $_SESSION['message'] = "Book deleted successfully.";
-        $_SESSION['message_type'] = "success";
+        // $_SESSION['message'] = "Book deleted successfully.";
+        // $_SESSION['message_type'] = "success";
     } else {
-        $_SESSION['message'] = "Error deleting book.";
-        $_SESSION['message_type'] = "danger";
+        // $_SESSION['message'] = "Error deleting book.";
+        // $_SESSION['message_type'] = "danger";
     }
 
     mysqli_stmt_close($stmt);
