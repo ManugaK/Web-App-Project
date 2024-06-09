@@ -139,3 +139,30 @@ if (isset($_GET['category_id'])) {
           </button>
         </nav>
     </div>
+    
+<div class="container mt-5 blur-border">
+    <h2>Edit Category</h2>
+    <?php if(isset($_SESSION['message'])): ?>
+        <div class="alert alert-<?php echo $_SESSION['message_type']; ?>">
+            <?php 
+                echo $_SESSION['message']; 
+                unset($_SESSION['message']);
+                unset($_SESSION['message_type']);
+            ?>
+        </div>
+    <?php endif; ?>
+    <form action="Edit_category.php" method="POST">
+        <input type="hidden" name="old_category_id" value="<?php echo $category['category_id']; ?>">
+        <div class="mb-3">
+            <label for="category_id" class="form-label">Category ID:</label>
+            <input type="text" class="form-control" id="category_id" name="new_category_id" value="<?php echo $category['category_id']; ?>" required pattern="C\d{3}">
+        </div>
+        <div class="mb-3">
+            <label for="category_name" class="form-label">Category Name:</label>
+            <input type="text" class="form-control" id="category_name" name="category_name" value="<?php echo $category['category_Name']; ?>" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="View_categories.php" class="btn btn-secondary">Cancel</a>
+    </form>
+    <p>Last modified: <?php echo $category['date_modified']; ?></p>
+</div>
