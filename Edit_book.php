@@ -129,3 +129,37 @@ unset($_SESSION['form_values']);
         </button>
     </nav>
 </div>
+<div class="container mt-5 blur-border">
+    <h1>Edit Book</h1>
+    <?php if (isset($_SESSION['message'])): ?>
+        <div class="alert alert-<?php echo $_SESSION['message_type']; ?>">
+            <?php echo $_SESSION['message']; unset($_SESSION['message'], $_SESSION['message_type']); ?>
+        </div>
+    <?php endif; ?>
+    <form action="Edit_book.php" method="POST">
+        <input type="hidden" name="current_book_id" value="<?php echo $book['book_id']; ?>">
+        <div class="mb-3">
+            <label for="book_id" class="form-label">Book ID:</label>
+            <input type="text" class="form-control" id="book_id" name="book_id" value="<?php echo htmlspecialchars($form_values['book_id']); ?>" required pattern="B\d{3}">
+        </div>
+        <div class="mb-3">
+            <label for="book_name" class="form-label">Book Name:</label>
+            <input type="text" class="form-control" id="book_name" name="book_name" value="<?php echo htmlspecialchars($form_values['book_name']); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="category_id" class="form-label">Category:</label>
+            <select class="form-select" id="category_id" name="category_id" required>
+                <?php
+                $sql_categories = "SELECT * FROM bookcategory";
+                $result_categories = mysqli_query($conn, $sql_categories);
+                while($row_category = mysqli_fetch_assoc($result_categories)) {
+                    $selected = ($form_values['category_id'] == $row_category['category_id']) ? "selected" : "";
+                    echo "<option value='" . $row_category['category_id'] . "' $selected>" . $row_category['category_Name'] . "</option>";
+                }
+                ?>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="View_books.php" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
