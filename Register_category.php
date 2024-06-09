@@ -150,11 +150,11 @@ mysqli_close($conn);
     <form method="POST" action="">
         <div class="mb-3">
             <label for="category_id" class="form-label">Category ID</label>
-            <input type="text" name="category_id" id="category_id" class="form-control" placeholder="C001" required>
+            <input type="text" name="category_id" id="category_id" class="form-control" placeholder="Enter category ID (e.g., C001)" required pattern="C\d{3}">
         </div>
         <div class="mb-3">
             <label for="category_name" class="form-label">Category Name</label>
-            <input type="text" name="category_name" id="category_name" class="form-control" required>
+            <input type="text" name="category_name" id="category_name" class="form-control"placeholder="Enter category name" required>
         </div>
         <button type="submit" class="btn btn-primary">Register Category</button>
     </form>
