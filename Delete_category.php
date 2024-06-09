@@ -10,11 +10,11 @@ if (isset($_GET['category_id'])) {
     mysqli_stmt_bind_param($stmt, "s", $category_id);
 
     if (mysqli_stmt_execute($stmt)) {
-        $_SESSION['message'] = "Category deleted successfully.";
-        $_SESSION['message_type'] = "success";
+        // $_SESSION['message'] = "Category deleted successfully.";
+        // $_SESSION['message_type'] = "success";
     } else {
-        $_SESSION['message'] = "Error deleting category.";
-        $_SESSION['message_type'] = "danger";
+        // $_SESSION['message'] = "Error deleting category.";
+        // $_SESSION['message_type'] = "danger";
     }
 
     mysqli_stmt_close($stmt);
