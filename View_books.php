@@ -77,6 +77,11 @@
                     <select name="category" id="category" class="form-select">
                         <option value="">All Categories</option>
                         <?php
+                         session_start();
+                            if (!isset($_SESSION["user"])) {
+                                 header("Location: login.php");
+                                  exit;
+                            }
                         include 'Db_connection.php';
                         $sql_categories = "SELECT * FROM bookcategory";
                         $result_categories = $conn->query($sql_categories);
@@ -94,6 +99,11 @@
         </form>
 
         <?php
+            session_start();
+                if (!isset($_SESSION["user"])) {
+                   header("Location: login.php");
+                  exit;
+                }
         $sql = "SELECT b.book_id, b.book_name, bc.category_Name 
                 FROM book b 
                 JOIN bookcategory bc ON b.category_id = bc.category_id";
